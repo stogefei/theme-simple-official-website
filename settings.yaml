@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-modern-starter-setting
+  name: theme-simple-official-website-setting
 spec:
   forms:
     - group: post
@@ -37,3 +37,35 @@ spec:
               label: prose-neutral
             - value: prose-stone
               label: prose-stone
+
+    - group: basics
+      label: 基础
+      formSchema:
+        - $formkit: code
+          name: siteTitle
+          label: 站点名称
+          placeholder: 请输入站点名称
+          height: 80px
+          language: html
+          help: 支持 HTML 语法
+        - $formkit: date
+          name: siteStartTime
+          label: 建站时间
+          validation: required
+          value: "2023-08-05"
+          help: 注意，此项为必填项
+        - $formkit: text
+          name: icp
+          label: ICP 备案
+          placeholder: 请输入 ICP 备案号
+          help: 格式：皖ICP备 xxxxxxxx 号
+        - $formkit: text
+          name: gongan
+          label: 公安备案
+          placeholder: 请输入公安备案号
+          help: 格式：皖公网安备 xxxxxxxx 号
+        - $formkit: url
+          name: copyrightAgreement
+          label: 版权协议
+          placeholder: 请输入版权协议地址
+          help: 文章模块声明版权，也会使用此协议

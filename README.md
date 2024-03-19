@@ -2,6 +2,8 @@
 
 一个集成了现代前端技术栈的 Halo 2.0 的主题开发模板。
 
+简单的公司官网主题
+
 主题开发文档可查阅：<https://docs.halo.run/2.0.0-SNAPSHOT/developer-guide/theme/prepare>
 
 ## 特性
@@ -16,7 +18,7 @@
 ## 开发
 
 ```bash
-git clone git@github.com:halo-dev/theme-modern-starter.git ~/halo2-dev/themes/theme-modern-starter
+git clone git@github.com:halo-dev/theme-modern-starter.git ~/halo2-dev/themes/theme-simple-official-website
 ```
 
 ```bash

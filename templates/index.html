@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
+<html data-theme="cupcake" xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
   <th:block th:fragment="content">
     <div class="mx-auto flex h-screen w-96 flex-col items-center justify-center">
       <ul class="w-full list-inside list-disc">
@@ -11,7 +11,19 @@
           ></a>
         </li>
       </ul>
-      <h3>zaftest222</h3>
+      <div th:with="menu = ${menuFinder.getPrimary()}">
+        <ul th:with="menuItems = ${menu.menuItems}">
+          <li th:each="menuItem : ${menuItems}">
+            <a
+              th:href="@{${menuItem.status.href}}"
+              th:text="${menuItem.status.displayName}"
+              th:target="${menuItem.spec.target?.value}"
+            >
+            </a>
+          </li>
+        </ul>
+      </div>
+      <button class="btn btn-primary">Button</button>
       <div class="mt-6 flex w-full items-center justify-between" th:if="${posts.hasPrevious() || posts.hasNext()}">
         <a
           th:href="@{${posts.prevUrl}}"

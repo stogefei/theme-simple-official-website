@@ -4,13 +4,13 @@
     "halo",
     "halo-theme"
   ],
-  "homepage": "https://github.com/halo-dev/theme-modern-starter#readme",
+  "homepage": "https://github.com/stogefei/halo-theme#readme",
   "bugs": {
-    "url": "https://github.com/halo-dev/theme-modern-starter/issues"
+    "url": "https://github.com/stogefei/halo-theme/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/halo-dev/theme-modern-starter"
+    "url": "https://github.com/stogefei/halo-theme"
   },
   "license": "GPL-3.0",
   "author": {
@@ -42,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.16",
+    "daisyui": "^4.7.3",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^4.2.1",
