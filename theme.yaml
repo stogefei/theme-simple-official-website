@@ -13,5 +13,5 @@ spec:
   repo: https://github.com/stogefei/theme-simple-official-website.git
   settingName: "theme-simple-official-website-setting"
   configMapName: "theme-simple-official-website-configMap"
-  version: 2.0.0
-  require: 3.0.0
+  version: 1.0.0
+  require: 2.0.0
