@@ -18,11 +18,11 @@
 ## 开发
 
 ```bash
-git clone git@github.com:halo-dev/theme-modern-starter.git ~/halo2-dev/themes/theme-simple-official-website
+git clone git@github.com:halo-dev/theme-simple-official-website.git ~/halo2-dev/themes/theme-simple-official-website
 ```
 
 ```bash
-cd ~/halo2-dev/themes/theme-modern-starter
+cd ~/halo2-dev/themes/theme-simple-official-website
 ```
 
 ```bash

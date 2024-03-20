@@ -2,29 +2,22 @@
   "description": "A development starter theme with modern front-end technology stack for Halo",
   "keywords": [
     "halo",
-    "halo-theme"
+    "theme-simple-official-website"
   ],
-  "homepage": "https://github.com/stogefei/halo-theme#readme",
+  "homepage": "https://github.com/stogefei/theme-simple-official-website#readme",
   "bugs": {
-    "url": "https://github.com/stogefei/halo-theme/issues"
+    "url": "https://github.com/stogefei/theme-simple-official-website/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stogefei/halo-theme"
+    "url": "https://github.com/stogefei/theme-simple-official-website"
   },
   "license": "GPL-3.0",
   "author": {
-    "name": "Halo",
+    "name": "Zhuaofei",
     "email": "hi@halo.run",
-    "url": "https://github.com/halo-dev"
+    "url": "https://github.com/theme-simple-official-website"
   },
-  "maintainers": [
-    {
-      "name": "Ryan Wang",
-      "email": "i@ryanc.cc",
-      "url": "https://github.com/ruibaby"
-    }
-  ],
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite build --watch",
