@@ -10,6 +10,7 @@
 
 - 使用 [Vite](https://vitejs.dev/) 进行静态资源构建。
 - 使用 [Tailwind CSS](https://tailwindcss.com/) 进行样式开发。
+- 使用 [thymeleaf JS](https://www.thymeleaf.org/) 进行html开发。
 - 使用 [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) 作为内容样式。
 - 使用 [Iconify](https://iconify.design/) + [tailwindcss-plugin-icons](https://github.com/JensDll/tailwindcss-plugin-icons) 作为图标方案。
 - 集成了 [Alpine.js](https://alpinejs.dev/)。

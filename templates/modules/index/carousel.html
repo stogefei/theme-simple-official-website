@@ -5,13 +5,16 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
+        <img th:src="@{/assets/images/000.jpeg}" class="w-full" />
       </div>
       <div class="swiper-slide">
-        <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
+        <img th:src="@{/assets/images/001.jpeg}" class="w-full" />
       </div>
       <div class="swiper-slide">
-        <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
+        <img th:src="@{/assets/images/002.jpeg}" class="w-full" />
+      </div>
+      <div class="swiper-slide">
+        <img th:src="@{/assets/images/003.jpeg}" class="w-full" />
       </div>
     </div>
     <div class="swiper-button-next swiper-button-white"></div>
@@ -30,6 +33,25 @@
 .swiper-slide img {
   height: 100%;
   width: 100%;
+}
+.swiper-button-next.swiper-button-white{
+  background: url("themes/theme-simple-official-website/assets/images/vbg01.png") -45px 0 rgba(0, 0, 0, .1) !important;
+  border-radius: 6px;
+  margin-left: 1%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+.swiper-button-prev.swiper-button-white{
+  background: url("themes/theme-simple-official-website/assets/images/vbg01.png") 0px 0 rgba(0, 0, 0, .1) !important;
+  border-radius: 6px;
+  margin-left: 1%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+.swiper-button-prev{
+
 }
 </style>
 <script> 

@@ -1,0 +1,38 @@
+<div class="w-ful prudoct-detail">
+  <section>
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+      <div class="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">
+        <img th:src="@{/assets/images/product-01.webp}" alt="">
+      </div>
+      <div class="md:w-3/5 md:pl-6">
+        <div class="h-full flex flex-col justify-between text-right">
+          <h2 class="text-4xl font-semibold">
+            产品中心
+          </h2>
+          <div class="text-gray-400">
+            <p>专业从事滚动功能部件，直线球运动功能部件及</p>
+            <p>自动化机械技术研究</p>
+          </div>
+          <p>
+            <button
+              class="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"
+              th:onclick="'javascript:fungetone();'"
+            >查看更多</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  function fungetone () {
+    window.location.replace('/categories/prodoct')
+  }
+</script>
+<style>
+.prudoct-detail {
+    /* height: 300px; */
+    background-image: url("themes/theme-simple-official-website/assets/images/bg.jpg");
+    color: #fff;
+  }
+</style>
