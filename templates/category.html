@@ -1,6 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<body>
-  <div>sssss</div>
-</body>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(content = ~{::content})}">
+<th:block th:fragment="content">
+  <div class="w-full">
+    <th:block th:replace="~{modules/header}"/>
+    <div class="sm:h-56 lg:h-96">
+      <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
+    </div>
+    <div class="p-10 text-center">
+      <h3 class="text-3xl text-rose-600">产品中心</h3>
+      <p class="text-zinc-400 leading-9">PRODUCT CENTER</p>
+    </div>
+    <!-- 列表 -->
+    <div class="w-full bg-slate-100">
+      <div class="flex flex-row p-10">
+        <div class="basis-1/4">
+          <ul class="menu w-56">
+            <li><a>Item 1</a></li>
+            <li><a>Item 2</a></li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+        <div class="basis-3/4">
+          <div class="grid grid-cols-4 gap-4">
+            <div>01</div>
+            <div>02</div>
+            <div>03</div>
+            <div>04</div>
+            <div>05</div>
+            <div>06</div>
+            <div>07</div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- 底部 -->
+     <th:block th:replace="~{modules/footer}" />
+  </div>
+</th:block>
 </html>

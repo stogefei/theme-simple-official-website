@@ -3,7 +3,11 @@ const { Icons } = require("tailwindcss-plugin-icons");
 module.exports = {
   content: ["./templates/**/*.html", "./src/main.ts"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      }
+    },
   },
   plugins: [
     require("@tailwindcss/typography"),

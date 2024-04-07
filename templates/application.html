@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(content = ~{::content})}">
+<th:block th:fragment="content">
+  <div class="w-full" id="body-wrap">
+    <th:block th:replace="~{modules/header}"/>
+    <div>application</div>
+  </div>
+</th:block>
+</html>
