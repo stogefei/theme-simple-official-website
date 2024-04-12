@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-theme="cupcake" 
       xmlns:th="https://www.thymeleaf.org" 
-      th:replace="~{modules/layout :: html(content = ~{::content})}">
+      th:replace="~{modules/layout ::html(content = ~{::content},htmlType = 'tag',title = ${site.title}, head = ~{::head})}">
   <th:block th:fragment="content">
     <div class="w-full" id="body-wrap">
       <!-- 导航栏 -->

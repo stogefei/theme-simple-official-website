@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(content = ~{::content}, htmlType = 'category',title = ${'分类' + ': ' + category.spec.displayName + ' | ' + site.title}, head = ~{::head})}">
+<th:block th:fragment="content">
+  <div class="w-full" id="body-wrap">
+    <th:block th:replace="~{modules/header}"/>
+    <div class="sm:h-56 lg:h-96">
+      <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
+    </div>
+    <div class="p-10 text-center">
+      <h3 class="text-3xl text-rose-600">诚聘英才</h3>
+      <p class="text-zinc-400 leading-9">RECRUITMENT</p>
+    </div>
+
+    <!-- 列表 -->
+    <div class="px-6 md:px-60">
+      <ul role="list" class="divide-y divide-gray-100">
+        <li th:each="post : ${posts.items}" th:onclick="window.open([[${post.status.permalink}]])" class="flex justify-between gap-x-6 py-5 hover:bg-slate-50 rounded-sm cursor-pointer">
+            <div class="flex min-w-0 gap-x-4">
+              <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 text-gray-900" th:text="${post.spec.title}"></p>
+                <p class="mt-1 truncate text-xs leading-5 text-gray-500">有效时间： <span th:text="${post.metadata.annotations.startingTime}"></span>至<span th:text="${post.metadata.annotations.expiration}"></span></p>
+              </div>
+              </div>
+              <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+              <p class="text-sm leading-6 text-gray-900">深圳市 / 光明区</p>
+              <p class="mt-1 text-xs leading-5 text-gray-500"><span th:text="${#dates.format(post.spec.publishTime,'yyyy-MM-dd')}"></span> 发布</time></p>
+            </div>
+        </li>
+      </ul>
+    </div>
+
+    <script th:inline="javascript">
+      var category = [[${category}]];
+      var posts = [[${posts}]];
+      console.log(posts, 'posts')
+      console.log(category, 'singlePageFinder')
+  </script>
+     <!-- 底部 -->
+     <th:block th:replace="~{modules/footer}" />
+  </div>
+  </div>
+</th:block>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{modules/layout :: html(content = ~{::content},htmlType = 'tag',title = ${'标签' + ' | ' + site.title}, head = ~{::head})}">
+
+  <th:block th:fragment="content">
+    <div class="w-full">
+      <th:block th:replace="~{modules/header}"/>
+      <div class="sm:h-56 lg:h-96">
+        <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
+      </div>
+      <div class="p-10 text-center">
+        <h3 class="text-3xl text-rose-600">采血类</h3>
+        <p class="text-zinc-400 leading-9">PRODUCT CENTER</p>
+      </div>
+      <!-- 设备分类 -->
+      <!-- 底部 -->
+       <th:block th:replace="~{modules/footer}" />
+    </div>
+  
+    <script th:inline="javascript">
+      var category = [[${category}]];
+      var tags = [[${tagFinder.listAll()}]];
+      var posts = [[${posts}]];
+      console.log(posts, 'posts')
+      console.log(category, 'category')
+      console.log(tags, 'tags')
+    </script> 
+  </th:block>
+</html>

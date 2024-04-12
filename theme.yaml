@@ -27,5 +27,19 @@ spec:
         description: 关于页面
         screenshot:
         file: page_about.html
+    category:
+      - name: 诚聘英才
+        description: 诚聘英才分类
+        screenshot: 
+        file: recruitment.html
+      - name: 新闻中心
+        description: 新闻页面分类
+        screenshot: 
+        file: news.html
+    post:
+      - name: 招聘详情
+        description: 招聘详情页面
+        screenshot: 
+        file: recruitment_details.html
   version: 1.0.0
   require: 2.0.0

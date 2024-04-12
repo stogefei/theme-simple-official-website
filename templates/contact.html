@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layout :: html(content = ~{::content})}">
-<th:block th:fragment="content">
-  <div class="w-full" id="body-wrap">
-    <th:block th:replace="~{modules/header}"/>
-    <div>contact</div>
-  </div>
-</th:block>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content}, htmlType = 'contact', title = '联系我们', head = ~{::head})}">
+<head>
+  <script src="https://api.map.baidu.com/api?v=2.0&ak=MQzfS2gXIIjq9HsavQvIJDe7dQ7rEiV0"></script>
+</head>
+<body>
+  <th:block th:fragment="content">
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=MQzfS2gXIIjq9HsavQvIJDe7dQ7rEiV0"></script>
+    <div class="w-full" id="body-wrap">
+      <th:block th:replace="~{modules/header}"/>
+      <div class="sm:h-56 lg:h-96">
+        <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
+      </div>
+      <div class="p-10 text-center">
+        <h3 class="text-3xl text-rose-600">联系我们</h3>
+        <p class="text-zinc-400 leading-9">CONTACT US</p>
+      </div>
+      <!-- 联系我们 -->
+      <div class="w-full p-10">
+        <div th:utext="${singlePage.content.content}"> </div>
+      </div>
+
+      <div class="w-full p-10">
+        <div  class="h-96 w-full" id="container"></div>
+      </div>
+    </div>
+    <script th:inline="javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+          // DOM完全就绪后执行的代码
+        console.log('DOM is ready!');
+        var map = new BMap.Map("container");          // 创建地图实例  
+        map.addControl(new BMap.NavigationControl());
+        var point = new BMap.Point(113.929627,22.775032);  // 创建点坐标  
+        map.centerAndZoom(point, 16);
+        var marker = new BMap.Marker(point);        // 创建标注    
+        map.addOverlay(marker); 
+        var opts = {    
+            width : 250,     // 信息窗口宽度    
+            height: 100,     // 信息窗口高度    
+            title : "深圳鑫马精工科技有限公司"  // 信息窗口标题   
+        }    
+        var infoWindow = new BMap.InfoWindow("地址：深圳市光明区木墩路璟霆大厦西北侧约120米", opts);  // 创建信息窗口对象    
+        map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+        map.enableScrollWheelZoom(true); 
+
+                // 隐藏地址点的代码
+        function hideAddress(point) {
+          // 创建一个空的地理区域
+          var bound = new BMap.Bounds(point.lng, point.lat, point.lng, point.lat);
+          
+          // 创建一个空的地理区域
+          // var region = new BMap.Region(bound, 0);
+          
+          // 使用setViewport将视野调整为指定的区域
+          map.setViewport(region);
+        }
+        var hidePoint = new BMap.Point(113.929511,22.774995);
+        // hideAddress(hidePoint);
+      });
+    </script>
+    <style>
+      .BMap_bubble_title{
+        color: #e11d48;
+      }
+      .BMap_bubble_content{
+        font-size: 14px;
+        padding: 10px 0;
+      }
+    </style>
+  </th:block>
+</body>
 </html>
