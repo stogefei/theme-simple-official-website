@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{modules/layout :: html(content = ~{::content}, htmlType = 'about',title = '招聘详情', head = ~{::head})}">
+      th:replace="~{modules/layout :: html(content = ~{::content}, htmlType = 'about',title = '详情', head = ~{::head})}">
 <th:block th:fragment="content">
-<th:block th:fragment="content">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
   <title th:text="${post.spec.title}"></title>
   <div class="w-full" id="body-wrap">
     <th:block th:replace="~{modules/header}"/>
@@ -10,15 +15,15 @@
       <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
     </div>
     <div class="p-10 text-center">
-      <h3 class="text-3xl text-rose-600">招聘详情</h3>
+      <h3 class="text-3xl text-rose-600" th:text="${post.spec.title}"></h3>
       <p class="text-zinc-400 leading-9">RECRUITMENT DETAILS</p>
     </div>
-    <!-- 介绍 -->
+    <!-- 详情 -->
     <div class="w-full p-10 md:px-40">
       <div th:utext="${post.content.content}"> </div>
     </div>
   </div>
   <!-- 底部 -->
   <th:block th:replace="~{modules/footer}" />
-</th:block>
+</body>
 </html>

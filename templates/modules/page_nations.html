@@ -1,0 +1,47 @@
+  <!--
+    分页模块
+    @param  path       '/path/page/n' 中的 `/path` 需要保留 `/`
+    @param  pageInfo   Halo类型UrlContextListResult<ListedPostVo>
+    @param  isIndex    是否主页
+    @param  _param     参数
+ -->
+  <!-- 分页 -->
+  <th:block th:fragment="page(path,pageInfo,isIndex,_param)">
+    <div class="text-center" th:with="paths = ${isIndex ? path : path}">
+      <div class="flex justify-center">
+        <a       
+          th:if="${pageInfo.hasPrevious}"
+          th:href="${pageInfo.prevUrl}" 
+          class="flex items-center px-4 py-2 mx-1 text-gray-500 bg-white rounded-md cursor-not-allowed dark:bg-gray-800 dark:text-gray-600">
+            上一页
+        </a>
+
+        <th:block th:each="index:${#numbers.sequence(pageInfo.page-2,pageInfo.page+2)}">
+          <span 
+            class="items-center hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:flex dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200 current" 
+            th:if="${pageInfo.page} == ${index}" 
+            th:text="${pageInfo.page}"></span>
+
+          <a class="items-center hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:flex dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+             th:unless="${pageInfo.page == index}"
+             th:if="${index > 0 && index <= pageInfo.totalPages}"
+             th:href="${#strings.equals(index, '1') ? paths + _param : path+'/page/'+index  + _param}"
+             th:text="${index}">
+            </a>
+      </th:block>
+      <th:block th:if="${pageInfo.totalPages - pageInfo.page > 2}">
+        <span class="space" th:if="${pageInfo.totalPages - pageInfo.page != 3}">…</span>
+        <a class="items-center hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:flex dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200"
+           th:href="${path+'/page/'+pageInfo.totalPages+_param}"
+           th:text="${pageInfo.totalPages}"
+           ></a>
+    </th:block>
+        <a rel="next" 
+          th:if="${pageInfo.hasNext}"
+          th:href="${pageInfo.nextUrl}"
+          class="flex items-center px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
+            下一页
+        </a>
+      </div>
+    </div>
+  </th:block>

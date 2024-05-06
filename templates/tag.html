@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{modules/layout :: html(content = ~{::content},htmlType = 'tag',title = ${'标签' + ' | ' + site.title}, head = ~{::head})}">
 
   <th:block th:fragment="content">
@@ -9,21 +9,45 @@
         <img alt="gallery" class="inset-0 w-full h-full object-cover object-center"  th:src="@{/assets/images/product.jpeg}">
       </div>
       <div class="p-10 text-center">
-        <h3 class="text-3xl text-rose-600">采血类</h3>
+        <h3 class="text-3xl text-rose-600" th:text="${tag.spec.displayName}"></h3>
         <p class="text-zinc-400 leading-9">PRODUCT CENTER</p>
       </div>
-      <!-- 设备分类 -->
+      <!-- 主体 -->
+    <div class="w-full p-10" th:with='postRandomImg=${#strings.contains(theme.config.basics.postRandomImg,"?") ? theme.config.basics.postRandomImg+"&" : theme.config.basics.postRandomImg+"?"}'>
+      <section class="bg-white dark:bg-gray-900">
+        <div class="container px-6 py-10 mx-auto">
+            <div class="grid grid-cols-2 gap-8 mt-8 lg:grid-cols-4">
+                <div class="cursor-pointer h-48 rounded-md" th:each="post : ${posts.items}" 
+                      th:onclick="window.location.href=[[${post.status.permalink}]]">
+                    <img  class="relative z-10 object-cover w-full h-32" 
+                          th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
+                          th:src="${img}">
+                    <div class="relative w-full text-center z-20 p-4 mx-auto bg-white shadow dark:bg-gray-900">
+                        <a th:text="${post.spec.title}" class="text-gray-800 hover:underline dark:text-white md:text-xl">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- 分页 -->
+    <div th:replace="~{modules/page_nations :: page(${tag.status.permalink},${posts},true,'')}"></div>
       <!-- 底部 -->
        <th:block th:replace="~{modules/footer}" />
     </div>
-  
     <script th:inline="javascript">
-      var category = [[${category}]];
-      var tags = [[${tagFinder.listAll()}]];
+      // var tag = [[${tag}]];
+      // const name = tag;
+      // var tags = [[${tagFinder.listAll()}]];
       var posts = [[${posts}]];
+      // console.log(name, 'name')
+      // console.log(tag, 'tag')
+      // console.log(tags, 'tags')
+      // console.log(post, 'post')
       console.log(posts, 'posts')
-      console.log(category, 'category')
-      console.log(tags, 'tags')
+      // console.log(category, 'category===')
+      // console.log(tags, 'tags')
     </script> 
   </th:block>
 </html>

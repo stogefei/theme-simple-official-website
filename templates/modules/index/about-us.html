@@ -1,18 +1,19 @@
+<th:block>
 <div class="w-full">
 <div>
   <section class="text-gray-600 body-font overflow-hidden">
     <div class="container px-5 py-24 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="ecommerce" class="hover:scale-110 lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" th:src="@{/assets/company/000.png}">
-        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex-col justify-between ">
-        <div>
-          <h2 class="text-sm title-font text-gray-500 tracking-widest">ABOUT AS</h2>
-          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">关于我们</h1>
-        </div>
+        <img alt="ecommerce" class="hover:scale-110 lg:w-1/2 w-full lg:h-auto h-32 object-fill object-center object-scale-down rounded" th:src="@{/assets/company/000.png}">
+        <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col justify-between">
+          <div>
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">ABOUT AS</h2>
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">关于我们</h1>
+          </div>
           <p class="leading-relaxed">
             专注于医疗耗材自动化生产领域，从URS需求输出到项目FAT/SAT验收交付，拥有先进且完善的项目管理和服务体系;目前已为多家医疗行业头部客户提供包括输注导管、Y型留置针、真空采血管、IVD耗材等多款全自动生产设备解决方案;
            </p>
-          <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+          <div th:onclick="window.location.href='/about'" class="cursor-pointer mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
             <p>
               查看更多
             </p>
@@ -22,33 +23,8 @@
     </div>
   </section>
 </div>
-  <!-- 参数 -->
-<div>
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap-m-4 text-center">
-        <div class="p-4 sm:w-1/4 w-1/2">
-          <h2 class="hover:scale-125 title-font font-medium sm:text-4xl text-3xl text-gray-900">2.7K</h2>
-          <p class="leading-relaxed">Users</p>
-        </div>
-        <div class="p-4 sm:w-1/4 w-1/2">
-          <h2 class="hover:scale-125 title-font font-medium sm:text-4xl text-3xl text-gray-900">1.8K</h2>
-          <p class="leading-relaxed">Subscribes</p>
-        </div>
-        <div class="p-4 sm:w-1/4 w-1/2">
-          <h2 class="hover:scale-125 title-font font-medium sm:text-4xl text-3xl text-gray-900">35</h2>
-          <p class="leading-relaxed">Downloads</p>
-        </div>
-        <div class="p-4 sm:w-1/4 w-1/2">
-          <h2 class="hover:scale-125 title-font font-medium sm:text-4xl text-3xl text-gray-900">4</h2>
-          <p class="leading-relaxed">Products</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
 <!-- 新闻中心 -->
-<div>
+<div th:with='postRandomImg=${#strings.contains(theme.config.basics.postRandomImg,"?") ? theme.config.basics.postRandomImg+"&" : theme.config.basics.postRandomImg+"?"}'>
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
       <div class="text-center"> 
@@ -56,60 +32,16 @@
         <h1 class="text-4xl my-8 text-rose-600">新闻中心</h1>
       </div>
       <div class="flex flex-wrap -m-4">
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
+        <div class="p-4 md:w-1/3" th:each="newItem : ${postFinder.listByCategory(1,3,'category-vVlfH')}">
+          <div th:onclick="window.location.href=[[${newItem.status.permalink}]]" class="cursor-pointer h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="hover:scale-110 lg:h-48 md:h-36 w-full object-cover object-center"  
+                th:with='img = ${#strings.isEmpty(newItem.spec.cover) ? postRandomImg+newItem.spec.title : newItem.spec.cover}'
+                th:alt="${newItem.spec.title}"
+                th:src="${img}">
             <div class="p-6">
-              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-              <div class="flex justify-end flex-wrap ">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
-            <div class="p-6">
-              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-              <div class="flex justify-end flex-wrap ">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
-            <div class="p-6">
-              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-              <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-              <div class="flex justify-end flex-wrap ">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"  th:text="${newItem.spec.title}"></h2>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3" th:text="${newItem.spec.title}"></h1>
+              <p class="leading-relaxed mb-3" th:text="${newItem.status.excerpt}"></p>
             </div>
           </div>
         </div>
@@ -129,7 +61,7 @@
           </svg>
           
           <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">地址</h2>
-          <p class="transition ease-out duration-300 leading-relaxed">浙江省丽水市莲都区南明山街道百仙路12号</p>
+          <p class="transition ease-out duration-300 leading-relaxed">深圳市光明区新湖街道楼村社区联腾路1号1栋8层</p>
         </div>
       </div>
       <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -150,7 +82,7 @@
             <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
           </svg>
           <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">邮箱</h2>
-          <p class="leading-relaxed">邮箱</p>
+          <p class="leading-relaxed">335659574@qq.com</p>
         </div>
       </div>
       <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
@@ -159,10 +91,24 @@
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
           <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">网站</h2>
-          <p class="leading-relaxed">网站</p>
+          <p class="leading-relaxed">xinmasz.com</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 </div>
+<script th:inline="javascript">
+  var tag = [[${postFinder.listByCategory(1,3,'category-vVlfH')}]];
+  // const name = tag;
+  // var tags = [[${tagFinder.listAll()}]];
+  // var posts = [[${posts}]];
+  // console.log(name, 'name')
+  console.log(tag, 'tag')
+  // console.log(tags, 'tags')
+  // console.log(post, 'post')
+  // console.log(posts, 'posts')
+  // console.log(category, 'category===')
+  // console.log(tags, 'tags')
+</script> 
+</th:block>

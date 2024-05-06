@@ -41,5 +41,9 @@ spec:
         description: 招聘详情页面
         screenshot: 
         file: recruitment_details.html
+      - name: 产品详情
+        description: 产品详情页面
+        screenshot: 
+        file: archive_detail.html
   version: 1.0.0
   require: 2.0.0
