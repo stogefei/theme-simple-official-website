@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const { Icons } = require("tailwindcss-plugin-icons");
+// const { colors } = require('tailwindcss-plugin-colors');
 module.exports = {
   content: ["./templates/**/*.html", "./src/main.ts"],
   theme: {
     extend: {
-      animation: {
-        'spin-slow': 'spin 3s linear infinite',
-      }
+      colors: {
+        'main-red': '#E71419',
+      },
     },
   },
   plugins: [

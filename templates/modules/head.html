@@ -1,11 +1,13 @@
 <!-- 公共的 head 部分，可以定义部分 links,scripts,styles -->
-<th:block th:fragment="head(htmlType)">
+<th:block th:fragment="head(htmlType, favicon)">
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta content="telephone=no" name="format-detection">
     <meta content="var(--heo-card-bg)" name="theme-color">
     <title th:text="${site.title}"></title>
-    <link rel="stylesheet" th:href="@{/assets/dist/style.css}" href="./assets/dist/style.css" />
+    <link rel="icon" th:href="@{favicon}"/>
+    <link rel="stylesheet" th:href="@{/assets/dist/style.css}"/>
     <script th:src="@{/assets/dist/main.iife.js}"></script>
-  </th:block>
+    <script th:src="@{/assets/libs/lazyload.min.js}"></script>
+</th:block>

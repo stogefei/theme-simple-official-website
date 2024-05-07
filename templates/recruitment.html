@@ -30,13 +30,6 @@
         </li>
       </ul>
     </div>
-
-    <script th:inline="javascript">
-      var category = [[${category}]];
-      var posts = [[${posts}]];
-      console.log(posts, 'posts')
-      console.log(category, 'singlePageFinder')
-  </script>
      <!-- 底部 -->
      <th:block th:replace="~{modules/footer}" />
   </div>

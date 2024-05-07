@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content, htmlType, title, head)">
+<html lang="en" th:fragment="html (content, htmlType, title, head)"
+      th:with="
+      theme_version = ${theme.config.other.staticResource.use == 'local' ? '?v='+ theme.spec.version : ''},
+      isLazyload = ${theme.config.basics.vanillaLazyload.enable},
+      loadingImg = ${theme.config.basics.vanillaLazyload.loadingImg}">
   <head>
-    <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType})}"/>
+    <th:block th:replace="~{modules/head :: head(htmlType = ${htmlType}, favicon = ${site.favicon})}"/>
   </head>
   <body>
+    <!-- 图片懒加载 -->
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script>
     <th:block th:replace="${content}" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          window.lazyLoadInstance && window.lazyLoadInstance.update()
+          console.log(window.lazyLoadInstance, 'lazyLoadInstance');
+        })
+    </script>
   </body>
 </html>

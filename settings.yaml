@@ -69,6 +69,47 @@ spec:
           label: 版权协议
           placeholder: 请输入版权协议地址
           help: 文章模块声明版权，也会使用此协议
+        - $formkit: group
+          name: vanillaLazyload
+          label: 懒加载
+          value:
+            enable: true
+            errorImg: "/themes/theme-simple-official-website/assets/images/404.gif"
+            loadingImg: /themes/theme-simple-official-website/assets/images/404s.gif
+          children:
+            - $formkit: radio
+              name: enable
+              id: enable
+              key: enable
+              options:
+                - label: 启用
+                  value: true
+                - label: 禁用
+                  value: false
+            - $formkit: attachment
+              name: loadingImg
+              id: loadingImg
+              key: loadingImg
+              if: $get(enable).value
+              label: 加载图片
+              validation: required
+              placeholder: 请输入图片 url
+            - $formkit: attachment
+              name: errorImg
+              label: 图片加载失败图
+              validation: required
+              placeholder: 请输入图片 url
+            - $formkit: radio
+              if: ($get(use).value == 'Twikoo' || $get(use).value == 'Artalk' || $get(use).value == 'Waline' ) && $get(commentsEnable).value
+              name: lazyload
+              label: 评论懒加载
+              value: false
+              help: 当评论进入浏览器的视窗时，将加载评论系统。(不建议使用，定位不到评论位置)
+              options:
+                - label: 打开
+                  value: true
+                - label: 关闭
+                  value: false
         - $formkit: url
           name: postRandomImg
           label: 随机封面

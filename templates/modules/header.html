@@ -1,10 +1,10 @@
 <header class="bg-white" x-data="{ isOn: false, isOpen: false }" th:with="menu = ${menuFinder.getPrimary()}">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="m-1.5 p-1.5">
-        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+      <a href="/" class="m-1.5 p-1.5">
+        <img class="h-10 w-auto" th:src="${site.logo}" alt="">
       </a>
-      <span class="flex flex-col justify-center"><span class="self-center">深圳市鑫马精工科技有限公司</span></span>
+      <!-- <span class="flex flex-col justify-center"><span class="self-center">深圳市鑫马精工科技有限公司</span></span> -->
     </div>
     <div class="flex lg:hidden">
       <button @click="isOn = !isOn" type="button"  class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -17,13 +17,13 @@
     <div class="hidden lg:flex lg:gap-x-12" x-data="{ isOpen: false }"  th:with="menuItems = ${menu.menuItems}">
       <div th:each="menuItem : ${menuItems}">
         <a th:if="${menuItem.spec.href != '/tags'}"
-              th:href="@{${menuItem.status.href}}"
+              th:href="${menuItem.status.href}"
               th:target="${menuItem.spec.target?.value}">
-              <span class="text-gray-800 transition-colors hover:text-blue-500 duration-300 transform dark:text-gray-200 mr-1.5 sm:mr-4" 
+              <span class="text-gray-800 transition-colors hover:text-main-red duration-300 transform dark:text-gray-200 mr-1.5 sm:mr-4" 
                     th:text="${menuItem.status.displayName}"></span>
         </a>
         <div th:if="${menuItem.spec.href == '/tags'}" class="relative">
-          <button type="button" @click="isOpen = !isOpen" class="flex items-center gap-x-1 text-sm leading-6 hover:text-blue-500" aria-expanded="false">
+          <button type="button" @click="isOpen = !isOpen" class="flex items-center gap-x-1 text-sm leading-6 hover:text-main-red" aria-expanded="false">
             <span th:text="${menuItem.status.displayName}" class="border-transparent transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500"></span>
             <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
@@ -39,7 +39,7 @@
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-90" 
             th:with="tags = ${tagFinder.listAll()}"
-            class="absolute z-10 w-36 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800"
+            class="absolute z-10 w-12 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800"
           >
           <div class="py-1.5">
               <a th:each="tag : ${tags}" th:href="${tag.status.permalink}" class="flex items-center p-4 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700 cursor-pointer">
