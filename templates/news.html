@@ -18,14 +18,14 @@
           <div class="grid grid-cols-1 gap-4 gap-8 mt-8 md:mt-16 md:grid-cols-3 xl:grid-cols-3">
               <div  th:each="post : ${posts.items}"
                     th:onclick="window.location.href=[[${post.status.permalink}]]"
-                    class="cursor-pointer w-full overflow-hidden">
+                    class="cursor-pointer h-56 w-full overflow-hidden shadow">
                   <img
-                    class="relative z-10 object-cover w-full rounded-md h-56 hover:scale-110"
+                    class="relative z-10 object-cover w-full overflow-hidden rounded-md h-56 hover:scale-110"
                     th:with='img = ${#strings.isEmpty(post.spec.cover) ? postRandomImg+post.spec.title : post.spec.cover}'
                     th:alt="${post.spec.title}"
                     th:src="${loadingImg}"
                     th:data-lazy-src="${img}">
-                  <div class="relative z-20 w-full p-3 mx-auto -mt-20 bg-white dark:bg-gray-900">
+                  <div class="relative z-20 w-full  p-3 mx-auto -mt-20 bg-white dark:bg-gray-900">
                     <a th:text="${post.spec.title}"  class="font-semibold text-gray-800 hover:underline dark:text-white md:text-xl">
                     </a>
                     <p th:text="${item.status.excerpt}"  class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
