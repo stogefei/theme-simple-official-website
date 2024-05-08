@@ -2,7 +2,7 @@
 <div class="w-full">
 <div>
   <section class="text-gray-600 body-font overflow-hidden">
-    <div class="container px-5 py-24 mx-auto">
+    <div class="container px-5 py-4 md:py-24 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <img alt="ecommerce" class="hover:scale-110 lg:w-1/2 w-full lg:h-auto h-32 object-fill object-center object-scale-down rounded" th:src="@{/assets/company/000.png}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 flex flex-col justify-between">
@@ -26,20 +26,20 @@
 <!-- 新闻中心 -->
 <div th:with='postRandomImg=${#strings.contains(theme.config.basics.postRandomImg,"?") ? theme.config.basics.postRandomImg+"&" : theme.config.basics.postRandomImg+"?"}'>
   <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
+    <div class="container px-5 py-4 md:py-24 mx-auto">
       <div class="text-center"> 
         <p>NEWS CENTER</p>
         <h1 class="text-4xl my-8 text-rose-600">新闻中心</h1>
       </div>
       <div class="flex flex-wrap -m-4">
-        <div class="p-4 md:w-1/3" th:each="newItem : ${postFinder.listByCategory(1,3,'category-vVlfH')}">
+        <div class="p-4 w-full md:w-1/3" th:each="newItem : ${postFinder.listByCategory(1,3,'category-vVlfH')}">
           <div th:onclick="window.location.href=[[${newItem.status.permalink}]]" class="cursor-pointer h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="hover:scale-110 lg:h-48 md:h-36 w-full object-cover object-center"  
+            <img class="hover:scale-110 h-32 lg:h-48 md:h-36 w-full object-cover object-center"  
                 th:with='img = ${#strings.isEmpty(newItem.spec.cover) ? postRandomImg+newItem.spec.title : newItem.spec.cover}'
                 th:alt="${newItem.spec.title}"
                 th:src="${loadingImg}"
                 th:data-lazy-src="${img}">
-            <div class="p-6">
+            <div class="p-2 md:p-6">
               <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"  th:text="${newItem.spec.title}"></h2>
               <h1 class="title-font text-lg font-medium text-gray-900 mb-3" th:text="${newItem.spec.title}"></h1>
               <p class="leading-relaxed mb-3" th:text="${newItem.status.excerpt}"></p>
@@ -53,45 +53,48 @@
 
 <!-- 联系方式 -->
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 py-4 md:py-24 mx-auto">
     <div class="flex flex-wrap -m-4 text-center">
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+      <div class="md:p-4 md:w-1/4 sm:w-1/2 w-full">
         <div class="border-gray-200 px-4 py-6 rounded-lg">
           <svg class="text-main-red w-12 h-12 mb-3 inline-block"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
           </svg>
           
-          <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">地址</h2>
+          <h2 class="text-base md:text-3xl font-medium text-gray-900 animate-bounce">地址</h2>
           <p class="transition ease-out duration-300 leading-relaxed">深圳市光明区新湖街道楼村社区联腾路1号1栋8层</p>
         </div>
       </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+
+      <div class="md:p-4 md:w-1/4 sm:w-1/2 w-full">
         <div class="border-gray-200 px-4 py-6 rounded-lg">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-main-red w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
             <circle cx="9" cy="7" r="4"></circle>
             <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
           </svg>
-          <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">电话</h2>
+          <h2 class="title-font font-medium text-base md:text-3xl text-gray-900 animate-bounce">电话</h2>
           <p class="leading-relaxed">电话</p>
         </div>
       </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+
+      <div class="md:p-4 md:w-1/4 sm:w-1/2 w-full">
         <div class=" border-gray-200 px-4 py-6 rounded-lg">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-main-red w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
             <path d="M3 18v-6a9 9 0 0118 0v6"></path>
             <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
           </svg>
-          <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">邮箱</h2>
+          <h2 class="title-font font-medium text-base md:text-3xl text-gray-900 animate-bounce">邮箱</h2>
           <p class="leading-relaxed">335659574@qq.com</p>
         </div>
       </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+
+      <div class="md:p-4 md:w-1/4 sm:w-1/2 w-full">
         <div class="border-gray-200 px-4 py-6 rounded-lg">
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-main-red w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
-          <h2 class="title-font font-medium text-3xl text-gray-900 animate-bounce">网站</h2>
+          <h2 class="title-font font-medium text-base md:text-3xl text-gray-900 animate-bounce">网站</h2>
           <p class="leading-relaxed">xinmasz.com</p>
         </div>
       </div>
