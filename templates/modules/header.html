@@ -1,5 +1,5 @@
 <header class="bg-white" x-data="{ isOn: false, isOpen: false }" th:with="menu = ${menuFinder.getPrimary()}">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
       <a href="/" class="m-1.5 p-1.5">
         <img class="h-12 w-auto" th:src="${site.logo}" alt="">
@@ -23,7 +23,7 @@
                     th:text="${menuItem.status.displayName}"></span>
         </a>
         <div th:if="${menuItem.spec.href == '/tags'}" class="relative">
-          <button type="button" @click="isOpen = !isOpen" class="flex items-center gap-x-1 text-sm leading-6 hover:text-main-red" aria-expanded="false">
+          <button type="button" @click="isOpen = !isOpen" class="flex items-center gap-x-1 leading-6 hover:text-main-red" aria-expanded="false">
             <span th:text="${menuItem.status.displayName}" class="border-transparent transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500"></span>
             <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
@@ -69,7 +69,7 @@
       <div class="flex items-center justify-between">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">深圳市鑫马精工科技有限公司</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+          <img class="h-8 w-auto" th:src="${site.logo}" alt="">
         </a>
         <button type="button" @click="isOn = !isOn" class="-m-2.5 rounded-md p-2.5 text-gray-700">
           <span class="sr-only">Close menu</span>

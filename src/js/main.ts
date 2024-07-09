@@ -7,7 +7,7 @@ const lazyloadImg = () => {
       threshold: 0,
       data_src: 'lazy-src',
       callback_error: (img: any) => {
-        console.log(img, 'img');
+        console.log(img, 'img===>');
           // img.setAttribute("srcset", GLOBAL_CONFIG.lazyload.error);
       }
   })

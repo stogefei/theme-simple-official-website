@@ -10,6 +10,8 @@
     <meta name="keywords" th:content="${site.seo.keywords}">
     <title th:text="${site.title}"></title>
     <link rel="icon" th:href="@{favicon}"/>
-    <link rel="stylesheet" th:href="@{/assets/dist/style.css}"/>
-    <script th:src="@{/assets/dist/main.iife.js}"></script>
+    <!-- <link rel="stylesheet" th:href="${'/assets/dist/style.css?v=' + theme_version}"/> -->
+    <link rel="stylesheet" th:href="@{'/assets/dist/style.css?v=' + theme_version}"/>
+    <!-- <script th:src="${'/assets/dist/main.iife.js?v=' + theme_version}"></script> -->
+    <script th:src="@{/assets/dist/main.iife.js?v=' + theme_version}"></script>
 </th:block>
